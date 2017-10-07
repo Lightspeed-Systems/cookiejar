@@ -320,8 +320,6 @@ module CookieJar
             args[:secure] = true
           when :httponly
             args[:http_only] = true
-          else
-            raise InvalidCookieError.new "Unknown cookie parameter '#{key}'"
           end
         end
       end
@@ -389,8 +387,6 @@ module CookieJar
             # must be in format '"port,port"'
             ports = keyvalue.split(/,\s*/)
             args[:ports] = ports.map do |portstr| portstr.to_i end
-          else
-            raise InvalidCookieError.new "Unknown cookie parameter '#{key}'"
           end
         end
       end until md.post_match.empty?
